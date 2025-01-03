@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vishaal De Mall</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <h2>Vishaal De Mall</h2>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="{{ url_for('login') }}" class="btn">Login</a></li>
+          <li><a href="{{ url_for('register') }}" class="btn">Register</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home" class="home-section">
+    <h1>Welcome to Vishaal De Mall</h1>
+    <p>Find products tailored to your budget and preferences. Explore exclusive deals and combos today!</p>
+    <a href="#features" class="btn">Explore Features</a>
+    
+    <!-- Icons -->
+    <i class="left-icon fas fa-shopping-cart"></i>
+    <i class="right-icon fas fa-box"></i>
+  </section>
+
+  <!-- Major Features Section -->
+  <section id="features" class="features-section">
+    <h2>Explore Our Features</h2>
+    <div class="features-container">
+      <div class="feature-card">
+        <i class="fas fa-cart-plus"></i>
+        <h3>Product Combos</h3>
+        <p>Budget-friendly food and product combos</p>
+        <!-- Button to navigate to the combo_view page -->
+        <a href="{{ url_for('combos') }}" class="btn">View Combos</a>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Indoor Navigation</h3>
+        <p>Easy navigation with our GMap integration</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-credit-card"></i>
+        <h3>Pre-order Products</h3>
+        <p>Reserve products for pick-up at your convenience</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-gift"></i>
+        <h3>Rewards & Offers</h3>
+        <p>Earn rewards with every purchase</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-heart"></i>
+        <h3>Custom Combos</h3>
+        <p>Create and save your own combo preferences</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; {{ year }} Vishaal De Mall | All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>

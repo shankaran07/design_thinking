@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff;
+      color: #333;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: #5f0067;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: white;
+      font-size: 1.8rem;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #f8b600;
+    }
+
+    .combos-btn {
+      background-color: #f8b600;
+      color: #5f0067;
+      padding: 8px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .combos-btn:hover {
+      background-color: #ffc94d;
+    }
+
+    /* Payment Section */
+    .payment-section {
+      padding: 40px 20px;
+      background-color: #f9f9f9;
+    }
+
+    .payment-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .payment-container h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #5f0067;
+    }
+
+    .order-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+
+    .order-item:last-child {
+      border-bottom: none;
+    }
+
+    .order-info {
+      flex: 1;
+    }
+
+    .order-info h3 {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .order-info p {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .order-price {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #5f0067;
+    }
+
+    /* Payment Methods Section */
+    .payment-methods {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .payment-method {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .payment-method input[type="radio"] {
+      width: 20px;
+      height: 20px;
+    }
+
+    .payment-method label {
+      font-size: 1rem;
+      color: #333;
+      cursor: pointer;
+    }
+
+    /* Payment Button */
+    .payment-btn {
+      background-color: #5f0067;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .payment-btn:hover {
+      background-color: #f8b600;
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: #5f0067;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 1rem;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 768px) {
+      .order-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .order-price {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Vishaal De Mall</h1>
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+      <a href="#about">About</a>
+      <a href="{{ url_for('combos') }}" class="btn">View Combos</a>
+    </nav>
+  </header>
+
+  <!-- Payment Section -->
+  <section class="payment-section">
+    <div class="payment-container">
+      <h2>Payment Details</h2>
+      <div class="order-summary">
+        <!-- Order Item 1 -->
+        <div class="order-item">
+          <div class="order-info">
+            <h3>Pizza</h3>
+            <p>Location: Shop 23, Ground Floor</p>
+          </div>
+          <div class="order-price">&#8377;250</div>
+        </div>
+        <!-- Order Item 2 -->
+        <div class="order-item">
+          <div class="order-info">
+            <h3>Coke (1.5L)</h3>
+            <p>Location: Shop 12, Food Court</p>
+          </div>
+          <div class="order-price">&#8377;80</div>
+        </div>
+        <!-- Order Item 3 -->
+        <div class="order-item">
+          <div class="order-info">
+            <h3>French Fries</h3>
+            <p>Location: Shop 18, Food Court</p>
+          </div>
+          <div class="order-price">&#8377;120</div>
+        </div>
+      </div>
+
+      <!-- Payment Methods -->
+      <div class="payment-methods">
+        <div class="payment-method">
+          <input type="radio" id="credit-card" name="payment-method" checked>
+          <label for="credit-card">Credit/Debit Card</label>
+        </div>
+        <div class="payment-method">
+          <input type="radio" id="paypal" name="payment-method">
+          <label for="paypal">PayPal</label>
+        </div>
+        <div class="payment-method">
+          <input type="radio" id="upi" name="payment-method">
+          <label for="upi">UPI</label>
+        </div>
+      </div>
+
+      <!-- Payment Button -->
+      <button class="payment-btn">Proceed to Payment</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Vishaal De Mall | All Rights Reserved</p>
+  </footer>
+</body>
+</html>
