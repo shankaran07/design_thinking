@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Combos</title>
+    <style>
+        .combos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 5rem;
+        }
+
+        .combo-grid {
+            width: 300px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-right: 4rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .combo-grid ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .combo-grid li {
+            margin-bottom: 10px;
+            
+        }
+
+        .combo-grid a {
+            align-items: flex-end;
+            
+        }
+
+        .combo-grid h3 {
+            text-align: center;
+        }
+        /* Default button styling */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff; /* Default primary color */
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3; /* Darker shade for hover */
+        }
+
+        /* Payment-specific button styling */
+        .payment-btn {
+            margin-top: 10px; /* Add spacing from previous elements */
+            display: block; /* Make it span the full width for emphasis */
+            text-align: center;
+            background-color: #28a745; /* Custom green for payment */
+        }
+
+        .payment-btn:hover {
+            background-color: #218838; /* Slightly darker green on hover */
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+          <div class="logo">
+            <h2>Vishaal De Mall</h2>
+          </div>
+          <nav>
+            <ul>
+              <li><a href="{{ url_for('home') }}">Home</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="login.html" class="btn">Login</a></li>
+              <li><a href="{{ url_for('register') }}" class="btn">Register</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    
+    <h1 style="margin-top: 5rem; text-align: center;">Combos for Your Budget: ₹{{ budget }} and Category: {{ category if category else 'Any' }}</h1>
+    
+    <div class="combos">
+        {% if combos %}
+            {% for combo in combos %}
+                <div class="combo-grid">
+                    <h3>Combo</h3>
+                    <ul>
+                        {% for product in combo %}
+                            <li>
+                                <strong>Name:</strong> {{ product.name }}<br>
+                                <strong>Price:</strong> ₹{{ product.price }}<br>
+                                <strong>Category:</strong> {{ product.category }}<br>
+                                <strong>Rating:</strong> {{ product.rating }}<br>
+                                <strong>Shop ID:</strong> {{ product.shop_id }}
+                            </li>
+                        {% endfor %}
+                        <li>
+                            <a href="{{ url_for('payment') }}" class="btn payment-btn">MAKE PAYMENT</a>
+                        </li>
+                    </ul>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No valid combos available based on your budget and category.</p>
+        {% endif %}
+    </div>
+    <footer>
+        <p>&copy; {{ year }} Vishaal De Mall | All Rights Reserved</p>
+    </footer>
+    
+</body>
+</html>
